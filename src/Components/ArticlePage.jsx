@@ -1,39 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import axios from "axios";
-import CommentCard from "./CommentCard";
+import { fetchArticleById } from "../api";
+import Comments from "./Comments";
+import Votes from "./Votes";
 
 const ArticlePage = () => {
   const { article_id } = useParams(); 
   const [article, setArticle] = useState(null);
-  const [comments, setComments] = useState([])
   const [loading, setLoading] = useState(true);
-  const [loadingComments, setLoadingComments] = useState(true);
   const [error, setError] = useState(null);
 
+ 
   useEffect(() => {
-    
-    axios
-      .get(`https://my-nc-news-k94s.onrender.com/api/articles/${article_id}`)
+    fetchArticleById(article_id)
       .then((response) => {
         setArticle(response.data.article);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
-        setError("Failed to load article");
+        setError("Failed to load article.");
         setLoading(false);
-      });
-
-      axios.get(`https://my-nc-news-k94s.onrender.com/api/articles/${article_id}/comments`)
-      .then((response) => {
-        setComments(response.data.comments);
-        setLoadingComments(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Failed to load comments");
-        setLoadingComments(false);
       });
   }, [article_id]);
 
@@ -51,14 +38,14 @@ const ArticlePage = () => {
         alt={article.title}
       />
       <p>{article.body}</p>
-      <p>Votes: {article.votes}</p>
     </div>
     <div>
-     <h3>Comments</h3>
-       {comments.map((comment) => (
-         <CommentCard key={comment.comment_id} comment={comment} />
-       ))}
+     <Votes article_id={article_id} initialVotes={article.votes} />
      </div>
+    <div>
+      <Comments article_id={article_id} />
+     </div>
+     
   </>
   );
 };
