@@ -28,3 +28,7 @@ export const postComment = (article_id, body) => {
     body,
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`);
+};
