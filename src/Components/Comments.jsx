@@ -25,13 +25,19 @@ const Comments = ({ article_id }) => {
     setComments((currentComments) => [newComment, ...currentComments]);
   };
 
+  const handleDeleteComment = (comment_id) => {
+    setComments((currentComments) =>
+      currentComments.filter((comment) => comment.comment_id !== comment_id)
+    );
+  }
+
   return (
     
      <div>
      <h3>Comments</h3>
      <CommentForm article_id={article_id} addComment={addComment} />
        {comments.map((comment) => (
-         <CommentCard key={comment.comment_id} comment={comment} />
+         <CommentCard key={comment.comment_id} comment={comment} onDelete={handleDeleteComment}/>
        ))}
      </div>
     
