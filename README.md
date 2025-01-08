@@ -46,18 +46,10 @@ A working backend API (ensure the backend is hosted or running locally).
 **Installation**
 1. Clone the repository:
 git clone https://github.com/your-username/nc-news-frontend.git
-cd nc-news-frontend
+
 
 2. Install dependencies:
 npm install
-Run the app in development mode:
-
-npm start
-Open http://localhost:3000 to view it in the browser.
-
-Backend API
-Ensure the backend API is running or deployed. You can find the backend setup instructions here.
-
 
 **API Endpoints**
 The application interacts with the backend via the following endpoints:
