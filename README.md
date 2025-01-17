@@ -85,7 +85,7 @@ The application interacts with the backend via the following endpoints:
 ## Hosted Application
 
 - **Frontend:** [NC News Frontend Hosted Application](https://your-frontend-hosted-link.com)
-- **Backend:** [NC News Backend Hosted Application](https://your-backend-hosted-link.com)
+- **Backend:** [NC News Backend Hosted Application](https://my-nc-news-k94s.onrender.com)
 
 Ensure the backend is running and accessible for the frontend to function correctly.
 
